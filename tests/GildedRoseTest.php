@@ -34,4 +34,15 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(48, $endItem->quality);
     }
+
+    public function testItemQualityIsNeverNegative()
+    {
+        $gildedRose = new GildedRose();
+
+        $startItem = new Item('normal', 0, 0);
+
+        $endItem = $gildedRose->endDay($startItem);
+
+        $this->assertEquals(0, $endItem->quality);
+    }
 }
