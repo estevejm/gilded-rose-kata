@@ -8,12 +8,13 @@ class GildedRose
      */
     public function endDay(Item $startItem)
     {
-        $endItem = new Item($startItem->name, $startItem->sell_in - 1, $startItem->quality - 1);
+        $newSellIn = $startItem->sell_in - 1;
+        $newQuality = $startItem->quality - 1;
 
         if ($startItem->sell_in == 0) {
-            $endItem = new Item($startItem->name, $startItem->sell_in - 1, $startItem->quality - 2);
+            $newQuality--;
         }
 
-        return $endItem;
+        return new Item($startItem->name, $newSellIn, $newQuality);
     }
 }
