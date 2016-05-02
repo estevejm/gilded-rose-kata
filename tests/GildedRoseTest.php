@@ -13,4 +13,15 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
         $this->assertLessThan($startItem->sell_in, $endItem->sell_in);
         $this->assertLessThan($startItem->quality, $endItem->quality);
     }
+
+    public function testQualityDegradesTwiceAsFastWhenSellDayPassed()
+    {
+        $gildedRose = new GildedRose();
+
+        $startItem = new Item('normal', 0, 50);
+
+        $endItem = $gildedRose->endDay($startItem);
+
+        $this->assertEquals(48, $endItem->quality);
+    }
 }
