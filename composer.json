@@ -1,0 +1,7 @@
+{
+    "name": "ejm/gilded-rose-kata",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    }
+}

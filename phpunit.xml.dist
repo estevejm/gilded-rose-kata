@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processUncoveredFilesFromWhitelist="true"
+    report-useless-tests="true"
+    disallow-test-output="true"
+    backupGlobals="true"
+    bootstrap="vendor/autoload.php"
+    colors="true">
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
