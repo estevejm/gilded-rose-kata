@@ -15,6 +15,10 @@ class GildedRose
             $newQuality--;
         }
 
+        if ($newQuality < 0) {
+            $newQuality = 0;
+        }
+
         return new Item($startItem->name, $newSellIn, $newQuality);
     }
 }
