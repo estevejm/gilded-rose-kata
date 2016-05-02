@@ -2,7 +2,7 @@
 
 class GildedRoseTest extends PHPUnit_Framework_TestCase
 {
-    public function testItemSellInAndQualityDecreases()
+    public function testItemQualityDecreasesWhenDayPasses()
     {
         $gildedRose = new GildedRose();
 
@@ -10,8 +10,7 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
 
         $endItem = $gildedRose->endDay($startItem);
 
-        $this->assertLessThan($startItem->sell_in, $endItem->sell_in);
-        $this->assertLessThan($startItem->quality, $endItem->quality);
+        $this->assertEquals(49, $endItem->quality);
     }
 
     public function testItemSellInDecreasesWhenDayPasses()
