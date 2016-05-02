@@ -10,6 +10,10 @@ class GildedRose
     {
         $endItem = new Item($startItem->name, $startItem->sell_in - 1, $startItem->quality - 1);
 
+        if ($startItem->sell_in == 0) {
+            $endItem = new Item($startItem->name, $startItem->sell_in - 1, $startItem->quality - 2);
+        }
+
         return $endItem;
     }
 }
