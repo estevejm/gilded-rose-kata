@@ -81,6 +81,14 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new BackstagePass(0, 30),
                 'expectedQuality' => 0,
             ],
+            'sell date passed long time ago and aged brie quality still increases twice as fast' => [
+                'item' => new AgedBrie(-100, 20),
+                'expectedQuality' => 22,
+            ],
+            'sell date passed long time ago and backstage pass quality still is 0' => [
+                'item' => new BackstagePass(-100, 20),
+                'expectedQuality' => 0,
+            ],
         ];
     }
 }
