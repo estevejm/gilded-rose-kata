@@ -2,16 +2,6 @@
 
 class GildedRoseTest extends PHPUnit_Framework_TestCase
 {
-    public function testItemQualityDecreasesWhenDayPasses()
-    {
-        $gildedRose = new GildedRose();
-
-        $startItem = new Item('normal', 20, 50);
-
-        $endItem = $gildedRose->endDay($startItem);
-
-        $this->assertEquals(49, $endItem->quality);
-    }
 
     public function testItemSellInDecreasesWhenDayPasses()
     {
@@ -24,36 +14,37 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(19, $endItem->sell_in);
     }
 
-    public function testQualityDegradesTwiceAsFastWhenSellDayPassed()
+    /**
+     * @dataProvider endDayQualityDataProvider
+     */
+    public function testEndDayQuality($startItem, $expectedQuality)
     {
         $gildedRose = new GildedRose();
 
-        $startItem = new Item('normal', 0, 50);
-
         $endItem = $gildedRose->endDay($startItem);
 
-        $this->assertEquals(48, $endItem->quality);
+        $this->assertEquals($expectedQuality, $endItem->quality);
     }
 
-    public function testItemQualityIsNeverNegative()
+    public function endDayQualityDataProvider()
     {
-        $gildedRose = new GildedRose();
-
-        $startItem = new Item('normal', 0, 0);
-
-        $endItem = $gildedRose->endDay($startItem);
-
-        $this->assertEquals(0, $endItem->quality);
-    }
-
-    public function testAgedBrieIncreasesQuality()
-    {
-        $gildedRose = new GildedRose();
-
-        $startItem = new Item('Aged Brie', 8, 10);
-
-        $endItem = $gildedRose->endDay($startItem);
-
-        $this->assertEquals(11, $endItem->quality);
+        return [
+            'item quality decreases when day ends' => [
+                'item' => new Item('normal', 20, 50),
+                'expectedQuality' => 49,
+            ],
+            'sell date passed item quality decreases twice as fast' => [
+                'item' => new Item('normal', 0, 50),
+                'expectedQuality' => 48,
+            ],
+            'item quality is never negative' => [
+                'item' => new Item('normal', 0, 0),
+                'expectedQuality' => 0,
+            ],
+            'aged brie item increases quality' => [
+                'item' => new Item('Aged Brie', 8, 10),
+                'expectedQuality' => 11,
+            ],
+        ];
     }
 }
