@@ -77,6 +77,10 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new BackstagePass(4, 30),
                 'expectedQuality' => 33,
             ],
+            'quality of backstage pass drops to 0 after the concert' => [
+                'item' => new BackstagePass(0, 30),
+                'expectedQuality' => 0,
+            ],
         ];
     }
 }
