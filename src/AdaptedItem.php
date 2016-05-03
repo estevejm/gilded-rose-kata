@@ -57,6 +57,8 @@ class AdaptedItem
             $newQuality = 0;
         }
 
-        return new Item($this->item->name, $newSellIn, $newQuality);
+        $newItem = new Item($this->item->name, $newSellIn, $newQuality);
+
+        return new AdaptedItem($newItem);
     }
 }
