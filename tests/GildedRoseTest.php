@@ -61,6 +61,14 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new BackstagePass(15, 30),
                 'expectedQuality' => 31,
             ],
+            'quality of backstage pass increases when concert is in 10 days' => [
+                'item' => new BackstagePass(10, 30),
+                'expectedQuality' => 32,
+            ],
+            'quality of backstage pass increases when concert is in less than 10 days' => [
+                'item' => new BackstagePass(9, 30),
+                'expectedQuality' => 32,
+            ],
         ];
     }
 }
