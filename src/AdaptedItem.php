@@ -38,19 +38,8 @@ class AdaptedItem
      */
     public function endDay()
     {
-        $qualityMultiplier = $this->item->name === "Aged Brie" ? 1 : -1;
-
         $newSellIn = $this->decrementSellInDays();
-
-        $newQuality = $this->getQuality() + $qualityMultiplier;
-
-        if ($this->getSellInDays() == 0) {
-            $newQuality += $qualityMultiplier;
-        }
-
-        if ($newQuality < 0) {
-            $newQuality = 0;
-        }
+        $newQuality = $this->recalculateQuality();
 
         return new AdaptedItem($this->item->name, $newSellIn, $newQuality);
     }
@@ -61,5 +50,25 @@ class AdaptedItem
     private function decrementSellInDays()
     {
         return $this->getSellInDays() - 1;
+    }
+
+    /**
+     * @return int
+     */
+    private function recalculateQuality()
+    {
+        $qualityMultiplier = $this->item->name === "Aged Brie" ? 1 : -1;
+
+        $newQuality = $this->getQuality() + $qualityMultiplier;
+
+        if ($this->getSellInDays() == 0) {
+            $newQuality += $qualityMultiplier;
+        }
+
+        if ($newQuality < 0) {
+            return 0;
+        }
+
+        return $newQuality;
     }
 }
