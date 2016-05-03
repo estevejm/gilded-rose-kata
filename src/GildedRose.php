@@ -3,15 +3,11 @@
 class GildedRose
 {
     /**
-     * @param Item $startItem
-     * @return Item
+     * @param AdaptedItem $startItem
+     * @return AdaptedItem
      */
-    public function endDay(Item $startItem)
+    public function endDay(AdaptedItem $startItem)
     {
-        $startOfDayItem = new AdaptedItem($startItem);
-
-        $endOfDayItem = $startOfDayItem->endDay();
-
-        return $endOfDayItem->getItem();
+        return $startItem->endDay();
     }
 }

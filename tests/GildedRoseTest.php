@@ -7,11 +7,11 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         $gildedRose = new GildedRose();
 
-        $startItem = new Item('normal', 20, 50);
+        $startItem = new AdaptedItem(new Item('normal', 20, 50));
 
         $endItem = $gildedRose->endDay($startItem);
 
-        $this->assertEquals(19, $endItem->sell_in);
+        $this->assertEquals(19, $endItem->getSellInDays());
     }
 
     /**
@@ -21,9 +21,9 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         $gildedRose = new GildedRose();
 
-        $endItem = $gildedRose->endDay($startItem);
+        $endItem = $gildedRose->endDay(new AdaptedItem($startItem));
 
-        $this->assertEquals($expectedQuality, $endItem->quality);
+        $this->assertEquals($expectedQuality, $endItem->getQuality());
     }
 
     public function endDayQualityDataProvider()
