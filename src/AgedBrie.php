@@ -11,14 +11,12 @@ class AgedBrie extends AdaptedItem
         parent::__construct("Aged Brie", $sellIn, $quality);
     }
 
-    protected function recalculateQuality()
+    protected function getQualityDiff()
     {
-        $newQuality = $this->getQuality() + 1;
-
         if ($this->hasSellDayPassed()) {
-            $newQuality += 1;
+            return 2;
         }
 
-        return $newQuality;
+        return 1;
     }
 }
