@@ -44,6 +44,12 @@ class AdaptedItem
         $newSellIn = $this->decrementSellInDays();
         $newQuality = $this->recalculateQuality();
 
+        if ($newQuality < self::MIN_QUALITY) {
+            $newQuality = self::MIN_QUALITY;
+        } elseif ($newQuality > self::MAX_QUALITY) {
+            $newQuality = self::MAX_QUALITY;
+        }
+
         return new AdaptedItem($this->item->name, $newSellIn, $newQuality);
     }
 
@@ -64,10 +70,6 @@ class AdaptedItem
 
         if ($this->hasSellDayPassed()) {
             $newQuality--;
-        }
-
-        if ($newQuality < self::MIN_QUALITY) {
-            return self::MIN_QUALITY;
         }
 
         return $newQuality;

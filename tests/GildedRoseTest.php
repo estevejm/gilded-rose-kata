@@ -89,6 +89,10 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new BackstagePass(-100, 20),
                 'expectedQuality' => 0,
             ],
+            'backstage pass quality is never  more than 50' => [
+                'item' => new BackstagePass(10, 50),
+                'expectedQuality' => 50,
+            ],
         ];
     }
 }
