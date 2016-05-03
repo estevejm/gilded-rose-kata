@@ -15,6 +15,10 @@ class BackstagePass extends AdaptedItem
             $newQuality++;
         }
 
+        if ($this->getSellInDays() <= 5) {
+            $newQuality++;
+        }
+
         return $newQuality;
     }
 }
