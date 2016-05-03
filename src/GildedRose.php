@@ -8,6 +8,9 @@ class GildedRose
      */
     public function endDay(Item $startItem)
     {
+        $startOfDayItem = new AdaptedItem($startItem);
+        $endOfDayItem = $startOfDayItem->endDay();
+
         $qualityMultiplier = $startItem->name === "Aged Brie" ? 1 : -1;
 
         $newSellIn = $startItem->sell_in - 1;
