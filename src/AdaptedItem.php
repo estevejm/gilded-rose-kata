@@ -66,13 +66,19 @@ class AdaptedItem
      */
     protected function recalculateQuality()
     {
-        $newQuality = $this->getQuality() - 1;
+        return $this->getQuality() + $this->getQualityDiff();
+    }
 
+    /**
+     * @return int
+     */
+    protected function getQualityDiff()
+    {
         if ($this->hasSellDayPassed()) {
-            $newQuality--;
+            return -2;
         }
 
-        return $newQuality;
+        return -1;
     }
 
     /**
