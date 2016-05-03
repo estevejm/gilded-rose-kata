@@ -40,7 +40,8 @@ class AdaptedItem
     {
         $qualityMultiplier = $this->item->name === "Aged Brie" ? 1 : -1;
 
-        $newSellIn = $this->getSellInDays() - 1;
+        $newSellIn = $this->decrementSellInDays();
+
         $newQuality = $this->getQuality() + $qualityMultiplier;
 
         if ($this->getSellInDays() == 0) {
@@ -52,5 +53,13 @@ class AdaptedItem
         }
 
         return new AdaptedItem($this->item->name, $newSellIn, $newQuality);
+    }
+
+    /**
+     * @return int
+     */
+    private function decrementSellInDays()
+    {
+        return $this->getSellInDays() - 1;
     }
 }
