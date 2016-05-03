@@ -12,7 +12,6 @@ class AdaptedItem
      */
     public function __construct(Item $item, $name, $sellIn, $quality)
     {
-        $this->item = $item;
         $this->item = new Item($name, $sellIn, $quality);
     }
 
@@ -31,15 +30,7 @@ class AdaptedItem
     {
         return $this->item->quality;
     }
-    
-    /**
-     * @return Item
-     */
-    public function getItem()
-    {
-        return $this->item;
-    }
-    
+
     /**
      * @return AdaptedItem
      */
