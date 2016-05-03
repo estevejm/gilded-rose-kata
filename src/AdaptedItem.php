@@ -62,7 +62,7 @@ class AdaptedItem
     {
         $newQuality = $this->getQuality() - 1;
 
-        if ($this->getSellInDays() == 0) {
+        if ($this->getSellInDays() <= 0) {
             $newQuality--;
         }
 

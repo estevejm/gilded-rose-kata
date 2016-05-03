@@ -37,6 +37,10 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new AdaptedItem('normal', 0, 50),
                 'expectedQuality' => 48,
             ],
+            'sell date passed long time ago and item quality still decreases twice as fast' => [
+                'item' => new AdaptedItem('normal', -100, 50),
+                'expectedQuality' => 48,
+            ],
             'item quality is never negative' => [
                 'item' => new AdaptedItem('normal', 0, 0),
                 'expectedQuality' => 0,
