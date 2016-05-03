@@ -53,6 +53,10 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new AgedBrie(8, 50),
                 'expectedQuality' => 50,
             ],
+            'quality of sulfuras is always 80' => [
+                'item' => new Sulfuras(),
+                'expectedQuality' => 80,
+            ],
         ];
     }
 }
