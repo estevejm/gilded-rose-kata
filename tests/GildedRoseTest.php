@@ -45,6 +45,14 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new AgedBrie(8, 10),
                 'expectedQuality' => 11,
             ],
+            'quality of an item is never more than 50' => [
+                'item' => new AdaptedItem('normal', 1, 50),
+                'expectedQuality' => 49,
+            ],
+            'quality of a aged brie is never more than 50' => [
+                'item' => new AgedBrie(8, 50),
+                'expectedQuality' => 50,
+            ],
         ];
     }
 }
