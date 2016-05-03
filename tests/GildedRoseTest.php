@@ -57,9 +57,9 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
                 'item' => new AgedBrie(8, 50),
                 'expectedQuality' => 50,
             ],
-            'quality of sulfuras is always 80' => [
-                'item' => new Sulfuras(),
-                'expectedQuality' => 80,
+            'quality of backstage pass increases when concert is in more than 10 days' => [
+                'item' => new BackstagePass("Backstage Pass", 15, 30),
+                'expectedQuality' => 31,
             ],
         ];
     }
