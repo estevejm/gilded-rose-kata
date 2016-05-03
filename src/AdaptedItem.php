@@ -62,7 +62,7 @@ class AdaptedItem
     {
         $newQuality = $this->getQuality() - 1;
 
-        if ($this->getSellInDays() <= 0) {
+        if ($this->hasSellDayPassed()) {
             $newQuality--;
         }
 
@@ -71,5 +71,13 @@ class AdaptedItem
         }
 
         return $newQuality;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function hasSellDayPassed()
+    {
+        return $this->getSellInDays() <= 0;
     }
 }

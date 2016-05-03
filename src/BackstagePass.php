@@ -9,7 +9,7 @@ class BackstagePass extends AdaptedItem
 
     protected function recalculateQuality()
     {
-        if ($this->getSellInDays() <= 0) {
+        if ($this->hasSellDayPassed()) {
             return 0;
         }
 

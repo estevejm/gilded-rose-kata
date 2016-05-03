@@ -15,7 +15,7 @@ class AgedBrie extends AdaptedItem
     {
         $newQuality = $this->getQuality() + 1;
 
-        if ($this->getSellInDays() <= 0) {
+        if ($this->hasSellDayPassed()) {
             $newQuality += 1;
         }
 
