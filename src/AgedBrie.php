@@ -19,6 +19,10 @@ class AgedBrie extends AdaptedItem
             $newQuality += 1;
         }
 
+        if ($newQuality > 50) {
+            return 50;
+        }
+
         return $newQuality;
     }
 }
