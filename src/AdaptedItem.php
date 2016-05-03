@@ -57,12 +57,10 @@ class AdaptedItem
      */
     protected function recalculateQuality()
     {
-        $qualityMultiplier = $this->item->name === "Aged Brie" ? 1 : -1;
-
-        $newQuality = $this->getQuality() + $qualityMultiplier;
+        $newQuality = $this->getQuality() - 1;
 
         if ($this->getSellInDays() == 0) {
-            $newQuality += $qualityMultiplier;
+            $newQuality--;
         }
 
         if ($newQuality < 0) {
