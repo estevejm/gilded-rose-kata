@@ -10,8 +10,9 @@ class AdaptedItem
     /**
      * @param Item $item
      */
-    public function __construct(Item $item)
+    public function __construct(Item $item, $name = null, $sellIn = null, $quality = null)
     {
+        $this->item = new Item($name, $sellIn, $quality);
         $this->item = $item;
     }
 

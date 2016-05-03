@@ -7,7 +7,7 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         $gildedRose = new GildedRose();
 
-        $startItem = new AdaptedItem(new Item('normal', 20, 50));
+        $startItem = new AdaptedItem(new Item('normal', 20, 50), 'normal', 20, 50);
 
         $endItem = $gildedRose->endDay($startItem);
 
@@ -21,7 +21,7 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         $gildedRose = new GildedRose();
 
-        $endItem = $gildedRose->endDay(new AdaptedItem($startItem));
+        $endItem = $gildedRose->endDay($startItem);
 
         $this->assertEquals($expectedQuality, $endItem->getQuality());
     }
@@ -30,19 +30,19 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
     {
         return [
             'item quality decreases when day ends' => [
-                'item' => new Item('normal', 20, 50),
+                'item' => new AdaptedItem(new Item('normal', 20, 50), 'normal', 20, 50),
                 'expectedQuality' => 49,
             ],
             'sell date passed item quality decreases twice as fast' => [
-                'item' => new Item('normal', 0, 50),
+                'item' => new AdaptedItem(new Item('normal', 0, 50), 'normal', 0, 50),
                 'expectedQuality' => 48,
             ],
             'item quality is never negative' => [
-                'item' => new Item('normal', 0, 0),
+                'item' => new AdaptedItem(new Item('normal', 0, 0), 'normal', 0, 0),
                 'expectedQuality' => 0,
             ],
             'aged brie item increases quality' => [
-                'item' => new Item('Aged Brie', 8, 10),
+                'item' => new AdaptedItem(new Item('Aged Brie', 8, 10), 'Aged Brie', 8, 10),
                 'expectedQuality' => 11,
             ],
         ];
