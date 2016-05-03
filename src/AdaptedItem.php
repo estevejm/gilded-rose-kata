@@ -55,7 +55,7 @@ class AdaptedItem
     /**
      * @return int
      */
-    private function recalculateQuality()
+    protected function recalculateQuality()
     {
         $qualityMultiplier = $this->item->name === "Aged Brie" ? 1 : -1;
 
