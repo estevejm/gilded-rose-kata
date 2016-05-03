@@ -2,6 +2,9 @@
 
 class AdaptedItem
 {
+    const MIN_QUALITY = 0;
+    const MAX_QUALITY = 50;
+
     /**
      * @var Item
      */
@@ -63,8 +66,8 @@ class AdaptedItem
             $newQuality--;
         }
 
-        if ($newQuality < 0) {
-            return 0;
+        if ($newQuality < self::MIN_QUALITY) {
+            return self::MIN_QUALITY;
         }
 
         return $newQuality;

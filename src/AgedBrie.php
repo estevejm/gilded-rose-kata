@@ -19,8 +19,8 @@ class AgedBrie extends AdaptedItem
             $newQuality += 1;
         }
 
-        if ($newQuality > 50) {
-            return 50;
+        if ($newQuality > static::MAX_QUALITY) {
+            return static::MAX_QUALITY;
         }
 
         return $newQuality;
