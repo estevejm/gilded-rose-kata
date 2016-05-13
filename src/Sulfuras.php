@@ -13,5 +13,4 @@ class Sulfuras extends AdaptedItem
     {
         return $this->getQuality();
     }
-
 }

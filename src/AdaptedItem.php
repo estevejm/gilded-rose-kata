@@ -64,7 +64,7 @@ class AdaptedItem
     /**
      * @return int
      */
-    private function recalculateQuality()
+    protected function recalculateQuality()
     {
         return $this->getQuality() + $this->getQualityDiff();
     }
