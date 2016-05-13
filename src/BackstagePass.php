@@ -7,12 +7,17 @@ class BackstagePass extends AdaptedItem
         parent::__construct("Backstage Pass", $sellIn, $quality);
     }
 
-    protected function getQualityDiff()
+    protected function recalculateQuality()
     {
         if ($this->hasSellDayPassed()) {
-            return - $this->getQuality();
+            return 0;
         }
 
+        return parent::recalculateQuality();
+    }
+
+    protected function getQualityDiff()
+    {
         if ($this->getSellInDays() <= 5) {
             return 3;
         }
