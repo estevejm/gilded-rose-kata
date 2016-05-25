@@ -21,6 +21,14 @@ class AdaptedItem
     }
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->item->name;
+    }
+
+    /**
      * @return int
      */
     public function getSellInDays()
@@ -50,13 +58,13 @@ class AdaptedItem
             $newQuality = self::MAX_QUALITY;
         }
 
-        return new AdaptedItem($this->item->name, $newSellIn, $newQuality);
+        return new AdaptedItem($this->getName(), $newSellIn, $newQuality);
     }
 
     /**
      * @return int
      */
-    private function decrementSellInDays()
+    protected function decrementSellInDays()
     {
         return $this->getSellInDays() - 1;
     }
