@@ -91,4 +91,26 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * @dataProvider conjuredEndDayQualityDataProvider
+     */
+    public function testEndDayQualityWhenItemIsConjured(AdaptedItem $startItem, $expectedQuality)
+    {
+        $item = new ConjuredItem($startItem);
+
+        $endItem = $item->endDay();
+
+        $this->assertEquals($expectedQuality, $endItem->getQuality());
+    }
+
+    public function conjuredEndDayQualityDataProvider()
+    {
+        return [
+            'item quality decreases when day ends' => [
+                'item' => new AdaptedItem('normal', 20, 50),
+                'expectedQuality' => 48,
+            ],
+        ];
+    }
 }
