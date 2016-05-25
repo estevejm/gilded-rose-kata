@@ -113,4 +113,28 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * @dataProvider invalidQualityDataProvider
+     */
+    public function testItemCantBeCreatedWithInvalidQuality($quality, $expected)
+    {
+        $item = new AdaptedItem('name', 20, $quality);
+
+        $this->assertEquals($expected, $item->getQuality());
+    }
+
+    public function invalidQualityDataProvider()
+    {
+        return [
+            'quality greater than max' => [
+                'quality' => 5000,
+                'expected' => 50,
+            ],
+            'quality smaller than min' => [
+                'quality' => -5000,
+                'expected' => 0,
+            ],
+        ];
+    }
 }

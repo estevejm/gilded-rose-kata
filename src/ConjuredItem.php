@@ -30,12 +30,6 @@ class ConjuredItem extends AdaptedItem
         $newSellIn = $this->decrementSellInDays();
         $newQuality = $this->recalculateQuality();
 
-        if ($newQuality < self::MIN_QUALITY) {
-            $newQuality = self::MIN_QUALITY;
-        } elseif ($newQuality > self::MAX_QUALITY) {
-            $newQuality = self::MAX_QUALITY;
-        }
-
         return new AdaptedItem($this->item->getName(), $newSellIn, $newQuality);
     }
 

@@ -17,6 +17,12 @@ class AdaptedItem
      */
     public function __construct($name, $sellIn, $quality)
     {
+        if ($quality < self::MIN_QUALITY) {
+            $quality = self::MIN_QUALITY;
+        } elseif ($quality > self::MAX_QUALITY) {
+            $quality = self::MAX_QUALITY;
+        }
+
         $this->item = new Item($name, $sellIn, $quality);
     }
 
@@ -51,12 +57,6 @@ class AdaptedItem
     {
         $newSellIn = $this->decrementSellInDays();
         $newQuality = $this->recalculateQuality();
-
-        if ($newQuality < self::MIN_QUALITY) {
-            $newQuality = self::MIN_QUALITY;
-        } elseif ($newQuality > self::MAX_QUALITY) {
-            $newQuality = self::MAX_QUALITY;
-        }
 
         return new AdaptedItem($this->getName(), $newSellIn, $newQuality);
     }
